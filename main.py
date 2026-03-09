@@ -3,6 +3,8 @@ from typing import Optional
 from llmclient import LLMCLIENT
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 import os
 
@@ -11,6 +13,8 @@ api_key = os.getenv("OPENAI_API_KEY")
 db = DataBase()
 app = FastAPI()
 llm = LLMCLIENT(api_key)
+
+app.mount("/static", StaticFiles(directory="static"), name = "static")
 
 app.add_middleware(
     CORSMiddleware,
@@ -32,7 +36,7 @@ def generate_title(message):
 
 @app.get("/")
 def home():
-    return {"message" : "server running"}
+    return FileResponse("static/index.html")
 
 
 @app.post("/title")
@@ -56,7 +60,6 @@ async def receive_messages(data : RequestData):
     messages = []
     for role, content in history:
         messages.append({"role" :role, "content":content})
-    messages.append({"role":"user", "content": user_message})
 
     print("end point hit")
     print(data.model_dump())

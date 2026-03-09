@@ -3,6 +3,7 @@ console.log("JS LOADED");
 
 let chatId = null;
 async function sendData() {
+
     console.log("BUTTOON CLICKED")
     const input = document.getElementById("userinput").value;
 

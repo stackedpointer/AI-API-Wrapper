@@ -5,18 +5,16 @@
         <title> 
             MY PAGE
         </title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="/static/style.css">
     </head>
     <body>
         <h2>typeshit</h2>
-        <div class = "chat-container">
             <div id="usermessage"></div>
             <div id = "aimessage"></div>
-        </div>
         <div class = "input-bar">
-        <input type = "text" id = "userinput">
-        <button type = "button" onclick="sendData()">send</button>
+        <input type = "text" id = "userinput" onkeydown="if(event.key === 'Enter'){sendData(); return false;}">
+        <button type = "button" onclick="sendData(); return false">send</button>
         </div>
-        <script src = "script.js"></script>
+        <script src = "/static/script.js"></script>
     </body>
 </html>
