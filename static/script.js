@@ -6,6 +6,17 @@ async function sendData() {
 
     console.log("BUTTOON CLICKED")
     const input = document.getElementById("userinput").value;
+    document.getElementById("userinput").value = ""
+
+    document.getElementById("chat-container").innerHTML += '<p class = "user-message" >' + input + '</p>';
+
+
+    const chatContainer = document.getElementById("chat-container");
+
+    if (!chatContainer) {
+        console.error("chat-container element not found!");
+        return;
+    }
 
     try{const response = await fetch("http://127.0.0.1:8000/request", {
         method: "POST", 
@@ -20,8 +31,7 @@ async function sendData() {
 
     chatId = data.chat_id;
 
-    document.getElementById("usermessage").innerHTML += "<p>" + data.user + "</p>";;
-    document.getElementById("aimessage").innerHTML += "<p>" + data.assistant + "</p>";
+    document.getElementById("chat-container").innerHTML += '<p class = "ai-message" >' + data.assistant + '</p>';
 }catch(error){
     console.error(error)
 }}

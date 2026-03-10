@@ -5,12 +5,11 @@
         <title> 
             MY PAGE
         </title>
-        <link rel="stylesheet" href="/static/style.css">
+        <link rel="stylesheet" href="/static/style.css?v=2">
     </head>
     <body>
-        <h2>typeshit</h2>
-            <div id="usermessage"></div>
-            <div id = "aimessage"></div>
+        <h1 class = "name">ChaitanyaGTP</h1>
+        <div id="chat-container"></div>
         <div class = "input-bar">
         <input type = "text" id = "userinput" onkeydown="if(event.key === 'Enter'){sendData(); return false;}">
         <button type = "button" onclick="sendData(); return false">send</button>
