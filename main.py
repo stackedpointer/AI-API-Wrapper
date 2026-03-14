@@ -39,12 +39,25 @@ def home():
     return FileResponse("static/index.html")
 
 
+@app.get("/chats")
+def get_chats():
+    chats = db.load_all()
+    chat = []
+    for c in chats:
+        chat.append({"id":c[0], "title":c[1]})
+    return chat
+@app.get("/chats/{chat_id}")
+def get_chat(chat_id: int):
+    messages = db.load(chat_id)
+    message = []
+    for r,c in messages:
+        message.append({"role": r, "content":c})
+    return message
+
 @app.post("/title")
 def receive_titles(data : TitleRequest):
     chat_id = db.get_id(data.title)
     return {"chat_id":chat_id}
-
-
 
 @app.post("/request")
 async def receive_messages(data : RequestData):

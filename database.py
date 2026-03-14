@@ -3,7 +3,7 @@ import sqlite3
 
 class DataBase:
     def __init__(self, db = "chatbot.db"):
-        self.conn = sqlite3.connect(db)
+        self.conn = sqlite3.connect(db, check_same_thread=False)
         self.c = self.conn.cursor()
 
         self.c.execute("""CREATE TABLE IF NOT EXISTS chats(id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -42,7 +42,7 @@ class DataBase:
         self.c.execute("DELETE FROM chats")
         self.c.execute("DELETE FROM messages")
     def load_all(self):
-        self.c.execute("SELECT * FROM chats")
+        self.c.execute("SELECT * FROM chats ORDER BY created_at DESC")
         stuff = self.c.fetchall()
         return stuff
 db = DataBase()
