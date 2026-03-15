@@ -54,6 +54,11 @@ def get_chat(chat_id: int):
         message.append({"role": r, "content":c})
     return message
 
+
+@app.delete("/chats/{chat_id}")
+def del_chat(chat_id: int):
+    db.delete_chat(chat_id)
+
 @app.post("/title")
 def receive_titles(data : TitleRequest):
     chat_id = db.get_id(data.title)

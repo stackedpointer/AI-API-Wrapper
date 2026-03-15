@@ -45,5 +45,10 @@ class DataBase:
         self.c.execute("SELECT * FROM chats ORDER BY created_at DESC")
         stuff = self.c.fetchall()
         return stuff
+    def delete_chat(self, chat_id):
+        self.c.execute("DELETE FROM messages WHERE chat_id = ?",(chat_id,))
+        self.c.execute("DELETE FROM chats WHERE id = ?",(chat_id,))
+
+
 db = DataBase()
 

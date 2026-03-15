@@ -27,9 +27,29 @@ body {
     border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#chat-list .chat-item span {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    flex: 1;
+}
+#chat-list .chat-item button {
+    background: none;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0 4px;
+    opacity: 0;
+    flex-shrink: 0;
+}
+
+#chat-list .chat-item:hover button {
+    opacity: 1;
 }
 
 #chat-list .chat-item:hover { background: #2e2e3e; }
