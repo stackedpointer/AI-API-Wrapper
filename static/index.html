@@ -1,26 +1,49 @@
 <!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <meta charset="UTF-8">
-        <title> 
-            MY PAGE
-        </title>
-        <link rel="stylesheet" href="/static/style.css?v=2">
-    </head>
-    <body>
-        <div id = "sidebar">
-            <h2>Chats</h2>
-            <div id = newchat><button onclick="newChat(); return false">new chat</button></div>
-            <div id = "chat-list"></div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MY PAGE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/style.css?v=3" />
+  </head>
+  <body>
+    <div id="sidebar">
+      <div class="sidebar-header">
+        <h2>Chats</h2>
+        <div id="newchat">
+          <button onclick="newChat(); return false" class="new-chat-btn">
+            <span class="plus-icon">+</span> new chat
+          </button>
         </div>
-    <div id = "main">
-        <h1 class = "name">Chaitanya(freaky)GTP</h1>
-        <div id="chat-container"></div>
-        <div class = "input-bar">
-        <input type = "text" id = "userinput" onkeydown="if(event.key === 'Enter'){sendData(); return false;}">
-        <button type = "button" onclick="sendData(); return false">send</button>
-        </div>
-        </div>
-        <script src = "/static/script.js"></script>
-    </body>
+      </div>
+      <div id="chat-list"></div>
+    </div>
+
+    <div id="main">
+      <div class="topbar">
+        <h1 class="name">Chaitanya<em>(freaky)</em>GTP</h1>
+      </div>
+
+      <div id="chat-container"></div>
+
+      <div class="input-bar">
+        <input
+          type="text"
+          id="userinput"
+          placeholder="say something…"
+          onkeydown="if(event.key === 'Enter'){sendData(); return false;}"
+        />
+        <button type="button" onclick="sendData(); return false" class="send-btn">
+          send
+        </button>
+      </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+  </body>
 </html>
